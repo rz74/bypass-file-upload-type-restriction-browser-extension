@@ -5,16 +5,22 @@
   <script src="jszip.min.js"></script>
   <script defer src="popup.js"></script>
   <style>
-    body { font-family: sans-serif; padding: 10px; background: #111; color: #eee; }
-    input, button, select { margin: 5px 0; width: 100%; }
+    body { font-family: sans-serif; padding: 10px; background: #111; color: #eee; width: 300px; }
+    input, button, select { margin: 5px 0; width: 100%; padding: 6px; border-radius: 5px; border: none; }
+    button { background-color: #333; color: #fff; cursor: pointer; }
+    button:hover { background-color: #444; }
+    #status { font-size: 0.9em; margin-top: 10px; color: #8f8; }
+    p.description { font-size: 0.85em; color: #ccc; margin-bottom: 10px; }
   </style>
 </head>
 <body>
-  <h3>Obfuscate File</h3>
+  <h3>File Obfuscator</h3>
+  <p class="description">This tool obfuscates a file using Base64 + character shift and splits it into parts for safe upload. It also includes a ChatGPT/LLM prompt to help decode. This should help you bypass the file-type-based blocker for AI tool uploads. If zip cant be uploaded, try upload segment files directly</p>
   <input type="file" id="fileInput" />
   <input type="number" id="shiftInput" placeholder="Shift value (e.g. 3)" min="0" max="255" />
   <input type="number" id="segmentsInput" placeholder="Segments (1–10)" min="1" max="10" value="10" />
   <button id="processBtn">Obfuscate + Download ZIP</button>
+  <button id="copyPromptBtn">Copy LLM Prompt</button>
   <p id="status"></p>
 </body>
 </html>
